@@ -1,0 +1,228 @@
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرص الاستثمار العقاري- SpaceShare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+ <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <i data-feather="home" class="text-indigo-600 h-6 w-6"></i>
+                        <span class="mr-2 text-xl font-bold text-indigo-600">SpaceShare</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+        <!-- Header -->
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    فرص الاستثمار العقاري
+                </h1>
+                <p class="mt-4 text-lg text-gray-500">
+                    أبرز الفرص الاستثمارية في السوق العقاري مع تحليل العوائد المتوقعة
+                </p>
+            </div>
+
+            <!-- Featured Opportunities -->
+            <div class="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Opportunity 1 -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="relative h-48 bg-indigo-600">
+                        <div class="absolute inset-0 flex items-center justify-center text-white">
+                            <i data-feather="building" class="h-16 w-16"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">عائد مرتفع</span>
+                            <span class="text-gray-500 text-sm">تحديث: سبتمبر ٢٠٢٥</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">مجمع مكاتب تجارية</h3>
+                        <p class="text-gray-600 mb-4">مجمع مكاتب حديث في وسط المدينة مع معدل إشغال ٩٥٪</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">العائد السنوي المتوقع</span>
+                                <span class="font-semibold text-indigo-600">١٢٪</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">فترة الاسترداد</span>
+                                <span class="font-semibold">٨ سنوات</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opportunity 2 -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="relative h-48 bg-green-600">
+                        <div class="absolute inset-0 flex items-center justify-center text-white">
+                            <i data-feather="home" class="h-16 w-16"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">نمو سريع</span>
+                            <span class="text-gray-500 text-sm">تحديث: سبتمبر ٢٠٢٥</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">مجمع سكني للطلاب</h3>
+                        <p class="text-gray-600 mb-4">مجمع سكني قريب من الجامعات مع طلب متزايد</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">العائد السنوي المتوقع</span>
+                                <span class="font-semibold text-indigo-600">١٠٪</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">فترة الاسترداد</span>
+                                <span class="font-semibold">٩ سنوات</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opportunity 3 -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="relative h-48 bg-yellow-600">
+                        <div class="absolute inset-0 flex items-center justify-center text-white">
+                            <i data-feather="shopping-bag" class="h-16 w-16"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">موقع متميز</span>
+                            <span class="text-gray-500 text-sm">تحديث: سبتمبر ٢٠٢٥</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">مركز تجاري</h3>
+                        <p class="text-gray-600 mb-4">مركز تجاري في منطقة حيوية مع إمكانية توسعة</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">العائد السنوي المتوقع</span>
+                                <span class="font-semibold text-indigo-600">١١٪</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">فترة الاسترداد</span>
+                                <span class="font-semibold">٨.٥ سنوات</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROI Comparison Chart -->
+            <div class="mt-12 bg-white rounded-lg shadow p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">مقارنة العوائد الاستثمارية</h2>
+                <canvas id="roiChart" height="300"></canvas>
+            </div>
+
+            <!-- Market Insights -->
+            <div class="mt-12 bg-white rounded-lg shadow p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">رؤى السوق</h2>
+                <div class="grid gap-6 grid-cols-1 md:grid-cols-2">
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold">العوامل المؤثرة على العائد</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i data-feather="check-circle" class="h-5 w-5 text-green-500 ml-2"></i>
+                                <span>موقع العقار في مناطق النمو</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="check-circle" class="h-5 w-5 text-green-500 ml-2"></i>
+                                <span>جودة المرافق والخدمات</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="check-circle" class="h-5 w-5 text-green-500 ml-2"></i>
+                                <span>معدل الإشغال المستقر</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold">توقعات النمو</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i data-feather="trending-up" class="h-5 w-5 text-indigo-500 ml-2"></i>
+                                <span>زيادة الطلب على المساحات المشتركة</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="trending-up" class="h-5 w-5 text-indigo-500 ml-2"></i>
+                                <span>تحسن في معدلات الإشغال</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="trending-up" class="h-5 w-5 text-indigo-500 ml-2"></i>
+                                <span>ارتفاع متوقع في قيم العقارات</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Initialize AOS
+        AOS.init();
+
+        // ROI Comparison Chart
+        const roiCtx = document.getElementById('roiChart').getContext('2d');
+        new Chart(roiCtx, {
+            type: 'bar',
+            data: {
+                labels: ['مجمع مكاتب تجارية', 'مجمع سكني للطلاب', 'مركز تجاري', 'متوسط السوق'],
+                datasets: [{
+                    label: 'العائد السنوي المتوقع ٪',
+                    data: [12, 10, 11, 8],
+                    backgroundColor: [
+                        'rgba(79, 70, 229, 0.5)',
+                        'rgba(16, 185, 129, 0.5)',
+                        'rgba(245, 158, 11, 0.5)',
+                        'rgba(107, 114, 128, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgb(79, 70, 229)',
+                        'rgb(16, 185, 129)',
+                        'rgb(245, 158, 11)',
+                        'rgb(107, 114, 128)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل الأسعار العقارية - SpaceShare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+     <!-- Navigation -->
+   <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <i data-feather="home" class="text-indigo-600 h-6 w-6"></i>
+                        <span class="mr-2 text-xl font-bold text-indigo-600">SpaceShare</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Header -->
+    <div class="pt-24 pb-8 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl" data-aos="fade-down">
+                    تحليل أسعار السوق العقاري
+                </h1>
+                <p class="mt-4 text-xl text-gray-600" data-aos="fade-up">
+                    تقرير شامل لأسعار العقارات في المملكة العربية السعودية - الربع الثالث ٢٠٢٥
+                </p>
+                <div class="mt-6 flex justify-center space-x-4 space-x-reverse">
+                    <button onclick="generatePDF()" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+                        <i data-feather="download" class="h-5 w-5 ml-2"></i>
+                        تحميل PDF
+                    </button>
+                    <button onclick="exportToExcel()" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700">
+                        <i data-feather="file-text" class="h-5 w-5 ml-2"></i>
+                        تصدير Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Key Statistics -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12" data-aos="fade-up">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500">متوسط سعر المتر</p>
+                            <h3 class="text-2xl font-bold text-gray-900">٣,٥٠٠ ريال</h3>
+                            <span class="text-green-500 text-sm">↑ ٥.٢٪</span>
+                        </div>
+                        <div class="p-3 bg-indigo-100 rounded-lg">
+                            <i data-feather="trending-up" class="h-6 w-6 text-indigo-600"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500">معدل الإشغال</p>
+                            <h3 class="text-2xl font-bold text-gray-900">٨٨٪</h3>
+                            <span class="text-green-500 text-sm">↑ ٢.٨٪</span>
+                        </div>
+                        <div class="p-3 bg-green-100 rounded-lg">
+                            <i data-feather="users" class="h-6 w-6 text-green-600"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500">عدد الصفقات</p>
+                            <h3 class="text-2xl font-bold text-gray-900">١٢,٣٤٥</h3>
+                            <span class="text-red-500 text-sm">↓ ١.٥٪</span>
+                        </div>
+                        <div class="p-3 bg-blue-100 rounded-lg">
+                            <i data-feather="shopping-cart" class="h-6 w-6 text-blue-600"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500">العائد على الاستثمار</p>
+                            <h3 class="text-2xl font-bold text-gray-900">٧.٨٪</h3>
+                            <span class="text-green-500 text-sm">↑ ٠.٥٪</span>
+                        </div>
+                        <div class="p-3 bg-yellow-100 rounded-lg">
+                            <i data-feather="dollar-sign" class="h-6 w-6 text-yellow-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Trends Chart -->
+            <div class="bg-white rounded-lg shadow p-6 mb-12" data-aos="fade-up">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">اتجاهات الأسعار</h2>
+                <canvas id="priceChart" height="100"></canvas>
+            </div>
+
+            <!-- Regional Analysis -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Price Comparison Table -->
+                <div class="bg-white rounded-lg shadow p-6" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">مقارنة الأسعار حسب المنطقة</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">المنطقة</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">متوسط السعر</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">التغير</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-900">الرياض</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-600">٣,٨٠٠ ريال</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-green-500">+٦.٢٪</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-900">جدة</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-600">٣,٦٠٠ ريال</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-green-500">+٤.٨٪</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-900">الدمام</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-600">٣,٢٠٠ ريال</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-red-500">-١.٥٪</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-900">مكة</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-600">٤,١٠٠ ريال</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-green-500">+٧.٣٪</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Property Type Analysis -->
+                <div class="bg-white rounded-lg shadow p-6" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">التحليل حسب نوع العقار</h2>
+                    <canvas id="propertyTypeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Market Insights -->
+            <div class="bg-white rounded-lg shadow p-6 mb-12" data-aos="fade-up">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">رؤى السوق</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">الطلب المتزايد</h3>
+                        <p class="text-gray-600">زيادة في الطلب على الوحدات السكنية في المناطق الحيوية بنسبة ١٥٪</p>
+                    </div>
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">نمو المشاركة</h3>
+                        <p class="text-gray-600">ارتفاع في معدلات مشاركة المساحات السكنية بين المستأجرين بنسبة ٢٥٪</p>
+                    </div>
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">توقعات مستقبلية</h3>
+                        <p class="text-gray-600">توقعات بنمو سوق مشاركة المساحات السكنية بنسبة ٢٠٪ خلال العام القادم</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        AOS.init();
+        feather.replace();
+
+        // وظائف التصدير
+        function generatePDF() {
+            const element = document.body;
+            const opt = {
+                margin: 1,
+                filename: 'تحليل-الأسعار-العقارية.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                Swal.fire({
+                    title: 'تم التحميل بنجاح!',
+                    text: 'تم تحميل التقرير بصيغة PDF',
+                    icon: 'success',
+                    confirmButtonText: 'حسناً'
+                });
+            });
+        }
+
+        function exportToExcel() {
+            // تجهيز البيانات للتصدير
+            const data = [
+                ['المنطقة', 'متوسط السعر', 'التغير'],
+                ['الرياض', '٣,٨٠٠ ريال', '+٦.٢٪'],
+                ['جدة', '٣,٦٠٠ ريال', '+٤.٨٪'],
+                ['الدمام', '٣,٢٠٠ ريال', '-١.٥٪'],
+                ['مكة', '٤,١٠٠ ريال', '+٧.٣٪']
+            ];
+
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "تحليل الأسعار");
+            
+            // تصدير الملف
+            XLSX.writeFile(wb, "تحليل-الأسعار-العقارية.xlsx");
+
+            Swal.fire({
+                title: 'تم التصدير بنجاح!',
+                text: 'تم تصدير البيانات إلى ملف Excel',
+                icon: 'success',
+                confirmButtonText: 'حسناً'
+            });
+        }
+
+        // سعر المتر Chart
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'line',
+            data: {
+                labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر'],
+                datasets: [{
+                    label: 'متوسط سعر المتر (ريال)',
+                    data: [3200, 3250, 3300, 3350, 3400, 3450, 3475, 3490, 3500],
+                    borderColor: '#4F46E5',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // نوع العقار Chart
+        const propertyTypeCtx = document.getElementById('propertyTypeChart').getContext('2d');
+        new Chart(propertyTypeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['شقق', 'فلل', 'مكاتب', 'محلات تجارية'],
+                datasets: [{
+                    data: [45, 25, 20, 10],
+                    backgroundColor: ['#4F46E5', '#10B981', '#F59E0B', '#EF4444']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

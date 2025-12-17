@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceShare - إنشاء حساب</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                    }
+                }
+            }
+}
+    </script>
+    <style>
+        .form-section {
+            transition: all 0.3s ease;
+        }
+        .hidden-section {
+            display: none;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
+        .policy-content {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .file-upload-label {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-primary mb-2">إنشاء حساب جديد</h1>
+            <p class="text-gray-600">انضم إلى منصتنا العقارية بخطوات بسيطة</p>
+    </div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <!-- Progress Steps -->
+            <div class="flex justify-between px-8 py-4 bg-gray-100">
+                <div class="step flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">١</div>
+                    <span class="text-sm mt-2 text-primary font-medium">المعلومات الأساسية</span>
+                </div>
+                <div class="step flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">٢</div>
+                    <span class="text-sm mt-2 text-gray-500">نوع العضوية</span>
+                </div>
+                <div class="step flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">٣</div>
+                    <span class="text-sm mt-2 text-gray-500">معلومات البائع</span>
+                </div>
+                <div class="step flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">٤</div>
+                    <span class="text-sm mt-2 text-gray-500">اكتمال</span>
+                </div>
+            </div>
+
+            <!-- Form Sections -->
+            <form id="signupForm" class="p-8">
+                <!-- Section 1: Basic Info (All Users) -->
+                <div id="section1" class="form-section">
+<h2 class="text-2xl font-semibold text-gray-800 mb-6">المعلومات الأساسية</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">الاسم الكامل</label>
+                            <input type="text" id="fullName" name="fullName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">رقم الجوال</label>
+                            <div class="flex">
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border-t border-l border-b border-gray-300 rounded-l-lg focus:ring-primary focus:border-primary">
+                                <select class="w-24 px-2 py-2 border border-gray-300 rounded-r-lg bg-gray-100">
+                                    <option>+966</option>
+                                    <option>+971</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">كلمة المرور</label>
+                            <input type="password" id="password" name="password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            <p class="text-xs text-gray-500 mt-1">يجب أن تحتوي على ٨ أحرف على الأقل مع حرف كبير وصغير ورقم ورمز خاص</p>
+                        </div>
+                        <div>
+                            <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">تأكيد كلمة المرور</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-start">
+                        <button type="button" onclick="nextSection('section1', 'section2')" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-opacity-90 transition">التالي</button>
+                    </div>
+                </div>
+                <!-- Section 2: Role Selection (All Users) -->
+                <div id="section2" class="form-section hidden-section">
+<h2 class="text-2xl font-semibold text-gray-800 mb-6">اختر نوع العضوية</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div>
+                            <input type="radio" id="buyer" name="role" value="buyer" class="hidden peer" required>
+                            <label for="buyer" class="block p-6 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-primary peer-checked:border-primary peer-checked:bg-primary/10">
+                                <div class="flex flex-col items-center">
+                                    <i data-feather="shopping-bag" class="w-10 h-10 text-primary"></i>
+                                    <h3 class="mt-3 font-medium text-lg">مشتري</h3>
+                                    <p class="text-sm text-gray-500 mt-1 text-center">أريد البحث عن عقارات للإيجار أو الشراء</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="seller" name="role" value="seller" class="hidden peer">
+                            <label for="seller" class="block p-6 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-primary peer-checked:border-primary peer-checked:bg-primary/10">
+                                <div class="flex flex-col items-center">
+                                    <i data-feather="home" class="w-10 h-10 text-primary"></i>
+                                    <h3 class="mt-3 font-medium text-lg">بائع</h3>
+                                    <p class="text-sm text-gray-500 mt-1 text-center">أريد عرض عقارات للإيجار أو البيع</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="both" name="role" value="both" class="hidden peer">
+                            <label for="both" class="block p-6 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-primary peer-checked:border-primary peer-checked:bg-primary/10">
+                                <div class="flex flex-col items-center">
+                                    <i data-feather="repeat" class="w-10 h-10 text-primary"></i>
+                                    <h3 class="mt-3 font-medium text-lg">كلاهما</h3>
+                                    <p class="text-sm text-gray-500 mt-1 text-center">أريد البيع والشراء</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-between">
+                        <button type="button" onclick="checkRoleAndProceed()" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-opacity-90 transition">التالي</button>
+                        <button type="button" onclick="prevSection('section2', 'section1')" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition">رجوع</button>
+                    </div>
+                </div>
+                <!-- Section 3: Buyer Info (Conditional) -->
+                <div id="buyerInfo" class="form-section hidden-section" style="display: none;">
+<h2 class="text-2xl font-semibold text-gray-800 mb-6">معلومات المشتري</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label for="buyerPreferences" class="block text-sm font-medium text-gray-700 mb-1">تفضيلات العقار</label>
+                            <textarea id="buyerPreferences" name="buyerPreferences" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" placeholder="صف العقار المثالي بالنسبة لك (اختياري)"></textarea>
+                        </div>
+
+                        <div>
+                            <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">نطاق الميزانية (ريال)</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="minBudget" class="block text-xs text-gray-500 mb-1">الحد الأدنى</label>
+                                    <input type="number" id="minBudget" name="minBudget" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="maxBudget" class="block text-xs text-gray-500 mb-1">الحد الأقصى</label>
+                                    <input type="number" id="maxBudget" name="maxBudget" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms & Policies -->
+                        <div class="mt-8 border-t pt-6">
+                            <div class="flex items-start">
+                                <input type="checkbox" id="agreeTermsBuyer" name="agreeTerms" required class="mt-1">
+                                <label for="agreeTermsBuyer" class="mr-2 block text-sm text-gray-700">
+                                    أوافق على <a href="#" onclick="showPolicyModal()" class="text-primary hover:underline">الشروط والأحكام</a> وسياسات العقارات في المملكة العربية السعودية
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" onclick="nextSection('buyerInfo', 'sellerInfo')" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-opacity-90 transition hidden" id="continueAsSellerBtn">متابعة كبائع</button>
+                            <button type="button" onclick="completeRegistration()" class="px-6 py-2 bg-secondary text-white rounded-lg hover:bg-opacity-90 transition hidden" id="completeAsBuyerBtn">إكمال كمشتري</button>
+                            <button type="button" onclick="prevSection('buyerInfo', 'section2')" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition">رجوع</button>
+                        </div>
+</div>
+                    </div>
+                </div>
+                <!-- Section 4: Seller Info (Conditional) -->
+                <div id="sellerInfo" class="form-section hidden-section" style="display: none;">
+<h2 class="text-2xl font-semibold text-gray-800 mb-6">معلومات البائع</h2>
+                    
+                    <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">نوع النشاط</label>
+                                <div class="flex space-x-4">
+                                    <label class="inline-flex items-center ml-4">
+                                        <input type="radio" name="businessType" value="individual" class="text-primary" checked>
+                                        <span class="mr-2">فرد</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="businessType" value="office" class="text-primary">
+                                        <span class="mr-2">مكتب</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                        <div id="companyNameField" class="hidden">
+                            <label for="companyName" class="block text-sm font-medium text-gray-700 mb-1">اسم المكتب</label>
+                            <input type="text" id="companyName" name="companyName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                        </div>                        <div>
+                            <label for="idNumber" class="block text-sm font-medium text-gray-700 mb-1">الهوية الوطنية / السجل التجاري</label>
+                            <input type="text" id="idNumber" name="idNumber" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            <p class="text-xs text-gray-500 mt-1">مطلوب لأغراض التحقق</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">هل تريد إضافة عقار الآن؟</label>
+                            <div class="flex space-x-4">
+                                <label class="inline-flex items-center ml-4">
+                                    <input type="radio" name="addProperty" value="yes" class="text-primary" checked>
+                                    <span class="mr-2">نعم</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="addProperty" value="no" class="text-primary">
+                                    <span class="mr-2">لا، سأضيف لاحقاً</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Property Details -->
+                        <div id="propertyDetails" class="space-y-6">
+                            <h3 class="text-lg font-medium text-gray-800">معلومات العقار</h3>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="realEstateLicense" class="block text-sm font-medium text-gray-700 mb-1">رقم الرخصة العقارية</label>
+                                    <div class="relative">
+                                        <input type="text" id="realEstateLicense" name="realEstateLicense" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" pattern="[0-9]+" maxlength="10">
+                                        <div class="absolute left-3 top-2">
+                                            <div id="licenseVerificationStatus" class="text-sm"></div>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">سيتم التحقق تلقائياً من الرخصة عبر منصة وساطة</p>
+                                </div>
+                                <div id="verifiedLicenseDetails" class="hidden p-4 bg-green-50 rounded-lg">
+                                    <p class="text-sm text-green-700">تم التحقق من الرخصة بنجاح</p>
+                                    <div class="mt-2 text-sm text-gray-600">
+                                        <p>الاسم: <span id="licenseHolderName"></span></p>
+                                        <p>نوع الرخصة: <span id="licenseType"></span></p>
+                                        <p>تاريخ الانتهاء: <span id="licenseExpiry"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="price" class="block text-sm font-medium text-gray-700 mb-1">السعر</label>
+                                        <div class="flex">
+                                            <input type="number" id="price" name="price" class="w-full px-4 py-2 border border-gray-300 rounded-l-lg focus:ring-primary focus:border-primary">
+                                            <select class="w-24 px-2 py-2 border-t border-r border-b border-gray-300 rounded-r-lg bg-gray-100">
+                                                <option>ريال/شهر</option>
+                                                <option>ريال/يوم</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">قابل للتفاوض؟</label>
+                                        <div class="flex space-x-4">
+                                            <label class="inline-flex items-center ml-4">
+                                                <input type="radio" name="negotiable" value="yes" class="text-primary" checked>
+                                                <span class="mr-2">نعم</span>
+                                            </label>
+                                            <label class="inline-flex items-center">
+                                                <input type="radio" name="negotiable" value="no" class="text-primary">
+                                                <span class="mr-2">لا</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">صور العقار</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <label for="imageUpload1" class="file-upload-label h-32 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-primary">
+                                        <i data-feather="plus" class="w-6 h-6 text-gray-400"></i>
+                                        <span class="text-sm text-gray-500 mt-2">إضافة صورة</span>
+                                        <input type="file" id="imageUpload1" name="propertyImages[]" accept="image/*">
+                                    </label>
+                                    <label for="imageUpload2" class="file-upload-label h-32 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-primary">
+                                        <i data-feather="plus" class="w-6 h-6 text-gray-400"></i>
+                                        <span class="text-sm text-gray-500 mt-2">إضافة صورة</span>
+                                        <input type="file" id="imageUpload2" name="propertyImages[]" accept="image/*">
+                                    </label>
+                                    <label for="imageUpload3" class="file-upload-label h-32 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-primary">
+                                        <i data-feather="plus" class="w-6 h-6 text-gray-400"></i>
+                                        <span class="text-sm text-gray-500 mt-2">إضافة صورة</span>
+                                        <input type="file" id="imageUpload3" name="propertyImages[]" accept="image/*">
+                                    </label>
+                                    <label for="imageUpload4" class="file-upload-label h-32 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-primary">
+                                        <i data-feather="plus" class="w-6 h-6 text-gray-400"></i>
+                                        <span class="text-sm text-gray-500 mt-2">إضافة صورة</span>
+                                        <input type="file" id="imageUpload4" name="propertyImages[]" accept="image/*">
+                                    </label>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">الحد الأقصى ٥ ميجابايت لكل صورة (JPG/PNG)</p>
+                            </div>
+                        </div>
+
+                        <!-- Terms & Policies -->
+                        <div class="mt-8 border-t pt-6">
+                            <div class="flex items-start">
+                                <input type="checkbox" id="agreeTerms" name="agreeTerms" required class="mt-1">
+                                <label for="agreeTerms" class="mr-2 block text-sm text-gray-700">
+                                    أوافق على <a href="#" onclick="showPolicyModal()" class="text-primary hover:underline">الشروط والأحكام</a> وسياسات العقارات في المملكة العربية السعودية
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" onclick="prevSection('sellerInfo', 'buyerInfo')" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition">رجوع</button>
+                            <button type="button" onclick="completeRegistration()" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-opacity-90 transition" id="completeSellerBtn">
+                                إكمال التسجيل كمشتري وبائع
+                            </button>
+</div>
+</div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Policy Modal -->
+    <div id="policyModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                <h3 class="text-xl font-semibold">الشروط والأحكام</h3>
+                <button onclick="hidePolicyModal()" class="text-gray-500 hover:text-gray-700">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="policy-content p-6 overflow-y-auto">
+                <h4 class="font-medium text-lg mb-2">🏡 السياسات العقارية العامة (المملكة العربية السعودية)</h4>
+                <ol class="list-decimal pr-5 space-y-2 mb-4">
+                    <li>يجب أن تكون جميع قوائم العقارات حقيقية ودقيقة ومملوكة قانونياً أو مصرح بمشاركتها/تأجيرها.</li>
+                    <li>أي معلومات احتيالية أو مضللة أو كاذبة ستؤدي إلى تعليق الحساب.</li>
+                    <li>يجب أن تتوافق المعاملات (البيع والشراء أو المشاركة) مع اللوائح العقارية السعودية.</li>
+                    <li>المنصة غير مسؤولة عن النزاعات بين المستخدمين، لكننا نوفر أدوات للإبلاغ والوساطة.</li>
+                    <li>المشترون والبائعون مسؤولون عن التحقق من حالة العقار قبل إتمام الاتفاقيات.</li>
+                </ol>
+
+                <h4 class="font-medium text-lg mb-2">📑 سياسات المشتري</h4>
+                <ul class="list-disc pr-5 space-y-2 mb-4">
+                    <li>يجب تقديم معلومات شخصية دقيقة.</li>
+                    <li>مسؤول عن مراجعة تفاصيل العقار قبل الحجز.</li>
+                    <li>يجب إتمام المدفوعات من خلال طرق آمنة ومعتمدة.</li>
+                </ul>
+
+                <h4 class="font-medium text-lg mb-2">🏢 سياسات البائع</h4>
+                <ul class="list-disc pr-5 space-y-2 mb-4">
+                    <li>يجب تقديم إثبات قانوني للملكية أو حقوق الإيجار.</li>
+                    <li>يجب تحميل تفاصيل العقار الحقيقية والمحدثة.</li>
+                    <li>يجب أن تكون الأسعار والتوفر واضحة وشفافة.</li>
+                    <li>يجب الامتثال لقوانين العقارات السعودية ولوائح الإيجار.</li>
+                </ul>
+
+                <h4 class="font-medium text-lg mb-2">⚖️ المشتري والبائع معاً</h4>
+                <ul class="list-disc pr-5 space-y-2">
+                    <li>يجب على المستخدمين الذين يعملون بكلا الدورين الامتثال لـ <strong>كلا مجموعتي القواعد</strong>.</li>
+                    <li>يجب احترام خصوصية وسرية المستخدمين الآخرين.</li>
+                </ul>
+            </div>
+            <div class="p-4 border-t border-gray-200 text-left">
+                <button onclick="hidePolicyModal()" class="px-4 py-2 bg-primary text-white rounded-lg">فهمت</button>
+            </div>
+        </div>
+    </div>
+<script>
+function showPolicyModal() { document.getElementById('policyModal').classList.remove('hidden'); }
+function hidePolicyModal() { document.getElementById('policyModal').classList.add('hidden'); }
+
+// Navigation functions
+function nextSection(current, next) {
+    document.getElementById(current).style.display = 'none';
+    document.getElementById(current).classList.add('hidden-section');
+    document.getElementById(next).style.display = 'block';
+    document.getElementById(next).classList.remove('hidden-section');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function prevSection(current, prev) {
+    document.getElementById(current).style.display ='none';
+    document.getElementById(current).classList.add('hidden-section');
+    document.getElementById(prev).style.display = 'block';
+    document.getElementById(prev).classList.remove('hidden-section');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// عند اختيار الدور نتحكم بالعرض
+function checkRoleAndProceed() {
+    const role = document.querySelector('input[name="role"]:checked')?.value;
+    if (!role) return alert("Please select a role");
+
+    if (role === 'buyer') {
+        nextSection('section2', 'buyerInfo');
+        document.getElementById('completeAsBuyerBtn').style.display = 'inline-block';
+        document.getElementById('continueAsSellerBtn').style.display = 'none';
+    } else if (role === 'seller') {
+        nextSection('section2', 'sellerInfo');
+    } else if (role === 'both') {
+        nextSection('section2', 'buyerInfo');
+        document.getElementById('completeAsBuyerBtn').style.display = 'none';
+        document.getElementById('continueAsSellerBtn').style.display = 'inline-block';
+    }
+}
+
+// زر إكمال كـ Buyer فقط
+document.getElementById('completeAsBuyerBtn')?.addEventListener('click', () => {
+    window.location.href = 'index.html';
+});
+
+// زر المتابعة لSeller بعد Buyer
+document.getElementById('continueAsSellerBtn')?.addEventListener('click', () => {
+    nextSection('buyerInfo', 'sellerInfo');
+});
+
+// زر إكمال كـ Seller
+document.getElementById('completeSellerBtn')?.addEventListener('click', () => {
+    window.location.href = 'index.html';
+});
+
+// التحقق من رخصة وساطة
+const licenseInput = document.getElementById('realEstateLicense');
+const verificationStatus = document.getElementById('licenseVerificationStatus');
+const verifiedDetails = document.getElementById('verifiedLicenseDetails');
+
+licenseInput?.addEventListener('input', async (e) => {
+    const licenseNumber = e.target.value;
+    if (licenseNumber.length === 10) {
+        verificationStatus.innerHTML = '<span class="text-blue-500">جاري التحقق...</span>';
+        
+        // هنا سيتم الاتصال بـ API وساطة (تمثيل)
+        try {
+            // تمثيل لعملية التحقق من API وساطة
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            if (licenseNumber.startsWith('1')) { // تمثيل للتحقق الناجح
+                verificationStatus.innerHTML = '<span class="text-green-500">✓ تم التحقق</span>';
+                verifiedDetails.classList.remove('hidden');
+                document.getElementById('licenseHolderName').textContent = 'أحمد محمد';
+                document.getElementById('licenseType').textContent = 'وسيط عقاري معتمد';
+                document.getElementById('licenseExpiry').textContent = '2026/12/31';
+            } else {
+                verificationStatus.innerHTML = '<span class="text-red-500">رقم رخصة غير صالح</span>';
+                verifiedDetails.classList.add('hidden');
+            }
+        } catch (error) {
+            verificationStatus.innerHTML = '<span class="text-red-500">خطأ في التحقق</span>';
+            verifiedDetails.classList.add('hidden');
+        }
+    } else {
+        verificationStatus.innerHTML = '';
+        verifiedDetails.classList.add('hidden');
+    }
+});
+
+// التحكم بحقل اسم المكتب
+const businessRadios = document.querySelectorAll('input[name="businessType"]');
+businessRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        const companyField = document.getElementById('companyNameField');
+        if (radio.value === 'office') companyField.classList.remove('hidden');
+        else companyField.classList.add('hidden');
+    });
+});
+
+// تفعيل أيقونات feather
+feather.replace();
+</script>
+</body>
+</html>

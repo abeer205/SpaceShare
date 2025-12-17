@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير السوق الشهري - SpaceShare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center flex-row-reverse">
+                        <i data-feather="home" class="text-indigo-600 h-6 w-6 ml-2"></i>
+                        <span class="text-xl font-bold text-indigo-600">SpaceShare</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="max-w-7xl mx-auto pt-24 px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                تقرير السوق العقاري - سبتمبر ٢٠٢٥
+            </h1>
+            <p class="mt-4 text-lg text-gray-500">
+                تحليل شامل لأسعار العقارات ومعدلات الإشغال في المناطق الرئيسية
+            </p>
+        </div>
+    </div>
+
+
+            <!-- Market Overview -->
+            <div class="mt-12 bg-white rounded-lg shadow p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">نظرة عامة على السوق</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <div class="text-indigo-600 mb-2">
+                            <i data-feather="trending-up" class="h-6 w-6"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">متوسط أسعار الإيجار</h3>
+                        <p class="text-3xl font-bold text-indigo-600">+٥.٢٪</p>
+                        <p class="text-sm text-gray-600">مقارنة بالشهر السابق</p>
+                    </div>
+                    
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <div class="text-green-600 mb-2">
+                            <i data-feather="users" class="h-6 w-6"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">معدل الإشغال</h3>
+                        <p class="text-3xl font-bold text-green-600">٨٩٪</p>
+                        <p class="text-sm text-gray-600">في المناطق الرئيسية</p>
+                    </div>
+
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="text-blue-600 mb-2">
+                            <i data-feather="clipboard" class="h-6 w-6"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">عقود الإيجار الجديدة</h3>
+                        <p class="text-3xl font-bold text-blue-600">+٣٤٢</p>
+                        <p class="text-sm text-gray-600">خلال الشهر الماضي</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Trends Chart -->
+            <div class="mt-8 bg-white rounded-lg shadow p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">اتجاهات الأسعار</h2>
+                <canvas id="priceChart" height="300"></canvas>
+            </div>
+
+            <!-- Occupancy by Area -->
+            <div class="mt-8 bg-white rounded-lg shadow p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">معدلات الإشغال حسب المنطقة</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <canvas id="occupancyChart"></canvas>
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg">
+                            <h3 class="font-semibold text-lg">المناطق الأعلى إشغالاً</h3>
+                            <ul class="mt-2 space-y-2">
+                                <li class="flex justify-between">
+                                    <span>وسط المدينة</span>
+                                    <span class="font-semibold">٩٥٪</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>المنطقة التجارية</span>
+                                    <span class="font-semibold">٩٢٪</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>الحي السكني الجديد</span>
+                                    <span class="font-semibold">٨٧٪</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Initialize AOS
+        AOS.init();
+
+        // Price Trends Chart
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'line',
+            data: {
+                labels: ['أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر'],
+                datasets: [{
+                    label: 'متوسط سعر الإيجار (ريال/متر مربع)',
+                    data: [240, 238, 245, 250, 255, 268],
+                    borderColor: 'rgb(79, 70, 229)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        // Occupancy Chart
+        const occupancyCtx = document.getElementById('occupancyChart').getContext('2d');
+        new Chart(occupancyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['وسط المدينة', 'المنطقة التجارية', 'الحي السكني الجديد', 'الضواحي'],
+                datasets: [{
+                    label: 'معدل الإشغال ٪',
+                    data: [95, 92, 87, 78],
+                    backgroundColor: [
+                        'rgba(79, 70, 229, 0.5)',
+                        'rgba(16, 185, 129, 0.5)',
+                        'rgba(59, 130, 246, 0.5)',
+                        'rgba(245, 158, 11, 0.5)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

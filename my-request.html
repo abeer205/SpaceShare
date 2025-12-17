@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rental Request - SpaceShare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+  <!-- FullCalendar CSS & JS -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+
+  <style>
+    .form-section { background: linear-gradient(to bottom right, #f9fafb, #f3f4f6); }
+    .fc-daygrid-day.fc-day-today { background-color: #dbeafe !important; }
+  </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm fixed w-full z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <i data-feather="home" class="text-indigo-600 h-6 w-6"></i>
+          <span class="ml-2 text-xl font-bold text-indigo-600">SpaceShare</span>
+        </div>
+        <div class="hidden md:flex md:items-center md:space-x-8">
+          <a href="index.html" class="text-gray-500 hover:text-gray-700 text-sm font-medium">Home</a>
+          <a href="for-expats.html" class="text-gray-900 border-b-2 border-indigo-500 text-sm font-medium">Properties</a>
+          <a href="my-acconut.html" class="text-gray-500 hover:text-gray-700 text-sm font-medium">Account</a>
+        </div>
+          <div class="hidden md:ml-6 md:flex md:items-center space-x-4">
+    <button onclick="window.location.href='sign.html'" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Sign Up
+    </button>
+    <button onclick="window.location.href='loginup.html'" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Login
+    </button>
+
+
+</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+    <!-- Space Details -->
+<div class="mb-8 lg:mb-0" data-aos="fade-right">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Flexible Desk in Open Space</h2>
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img class="w-full h-48 object-cover" src="http://static.photos/cityscape/640x360/3" alt="Flexible Desk">
+        <div class="p-6">
+            <div class="flex items-center mb-2">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">Coworking</span>
+                <span class="ml-2 text-sm text-gray-500">Riyadh, Al Nakheel</span>
+            </div>
+
+           <!-- Basic Details --> <h3 class="text-lg font-medium text-gray-900">Details</h3> 
+            <div class="mt-2 grid grid-cols-2 gap-4"> <div class="flex items-center">
+                <i data-feather="users" class="h-4 w-4 text-gray-500"></i><span class="ml-2 text-sm">Up to 6 people</span></div>
+                 <div class="flex items-center"><i data-feather="maximize" class="h-4 w-4 text-gray-500">
+                 </i><span class="ml-2 text-sm">850 sqft</span></div> <div class="flex items-center">
+                    <i data-feather="home" class="h-4 w-4 text-gray-500"></i><span class="ml-2 text-sm">1 Extra room
+</span></div> <div class="flex items-center"><i data-feather="droplet" class="h-4 w-4 text-gray-500"></i>
+                <span class="ml-2 text-sm">1 bathroom</span></div> </div>
+
+            <!-- Pricing -->
+            <h3 class="text-lg font-medium text-gray-900 mt-6">Pricing</h3>
+            <div class="mt-2">
+                <div class="flex justify-between"><span class="text-sm">Daily rate</span><span class="text-sm font-medium">$50/day</span></div>
+            </div>
+
+            <!-- Amenities -->
+            <div class="mt-6">
+                <h3 class="text-lg font-medium text-gray-900">Amenities</h3>
+                <ul class="mt-2 grid grid-cols-2 gap-2 text-sm text-gray-600">
+                    <li>✔ Wi-Fi</li>
+                    <li>✔ Air Conditioning</li>
+                    <li>✔ Coffee & Tea</li>
+                    <li>✔ Printing Services</li>
+                </ul>
+            </div>
+
+
+            <!-- House Rules -->
+            <div class="mt-6">
+                <h3 class="text-lg font-medium text-gray-900">Rules</h3>
+                <ul class="mt-2 text-sm text-gray-600 list-disc pl-5">
+                    <li>No loud calls</li>
+                    <li>Keep workspace clean</li>
+                    <li>Shared space etiquette</li>
+                </ul>
+            </div>
+
+            <!-- Owner Info -->
+            <div class="mt-6">
+                <h3 class="text-lg font-medium text-gray-900">Owner Info</h3>
+                <p class="mt-2 text-sm text-gray-600">
+                    Listed by: <span class="font-medium">Ahmed Al-Saud</span><br>
+                    Contact: <a href="mailto:ahmed@example.com" class="text-indigo-600 hover:underline">ahmed@example.com</a>
+                </p>
+            </div>
+
+            <!-- Location + Map -->
+            <div class="mt-6">
+                <h3 class="text-lg font-medium text-gray-900">Location</h3>
+                <p class="mt-2 text-sm text-gray-600">Al Nakheel, Riyadh – central and easy access to nearby cafes and transportation.</p>
+                <div class="mt-3 rounded-lg overflow-hidden shadow">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.0!2d46.721!3d24.678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f04!2zMjTCsDQwJzI5LjgiTiA0NsKwNDMnMzcuMiJF!5e0!3m2!1sen!2ssa" 
+                        width="100%" 
+                        height="200" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+  <!-- Comments Section -->
+  <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-3">Comments</h3>
+    <ul class="list-disc pl-5 text-gray-600 mb-4">
+      <li>"Great workspace, very quiet!" – Sarah</li>
+      <li>"Loved the coffee and Wi-Fi" – Khalid</li>
+    </ul>
+
+    <!-- Add New Comment -->
+    <form>
+      <textarea class="w-full border rounded p-2 mb-2" placeholder="Write your comment"></textarea>
+      <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Submit Comment</button>
+    </form>
+  </div>
+
+</div>
+
+
+
+
+      <!-- Rental Request Form -->
+      <div class="form-section rounded-lg p-6 shadow-md" data-aos="fade-left">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Rental Request Form</h2>
+        <form>
+          <div class="mb-6">
+            <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">Rental Duration</label>
+            <select id="duration" name="duration" class="mt-1 block w-full py-2 px-3 border rounded-md" required>
+              <option value="">Select duration</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+          </div>
+
+          <!-- Calendar Section -->
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Select Rental Dates</label>
+            <div id="rental-calendar" class="border rounded-md mx-auto" style="max-width: 350px; font-size: 0.85rem;"></div>
+            <input type="hidden" id="start-date" name="start-date">
+            <input type="hidden" id="end-date" name="end-date">
+            <p id="days-count" class="text-sm text-indigo-600 mt-2 font-medium"></p>
+          </div>
+
+<!-- Arrival & Departure -->
+<div class="mb-6">
+  <label for="checkin" class="block text-sm font-medium text-gray-700 mb-1">Check-in Time</label>
+  <input type="time" id="checkin" name="checkin" class="mt-1 block w-full px-3 py-2 border rounded-md" required>
+</div>
+
+<div class="mb-6">
+  <label for="checkout" class="block text-sm font-medium text-gray-700 mb-1">Check-out Time</label>
+  <input type="time" id="checkout" name="checkout" class="mt-1 block w-full px-3 py-2 border rounded-md" required>
+</div>
+
+
+          <div class="mb-6">
+            <label for="people" class="block text-sm font-medium text-gray-700 mb-1">Number of People</label>
+            <input type="number" id="people" name="people" min="1" class="mt-1 block w-full px-3 py-2 border rounded-md" placeholder="e.g. 2 people" required>
+          </div>
+
+          <div class="mb-6">
+            <label for="purpose" class="block text-sm font-medium text-gray-700 mb-1">Purpose of Use</label>
+            <select id="purpose" name="purpose" class="mt-1 block w-full py-2 px-3 border rounded-md" required>
+              <option value="">Select purpose</option>
+              <option value="housing">Housing</option>
+              <option value="office">Office Work</option>
+              <option value="storage">Storage / Warehouse</option>
+              <option value="event">Event / Occasion</option>
+            </select>
+          </div>
+
+          <div class="mb-6">
+            <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Additional Notes</label>
+            <textarea id="notes" name="notes" rows="3" class="w-full px-3 py-2 border rounded-md" placeholder="Any special requests or requirements"></textarea>
+          </div>
+
+          <div class="mt-8">
+            <button type="submit" class="w-full py-3 px-4 rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Submit Rental Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    feather.replace();
+
+    // --- Example bookings ---
+    const reservations = [
+      { start: "2025-09-28", end: "2025-09-28" },
+      { start: "2025-09-30", end: "2025-10-02" },
+      { start: "2025-10-05", end: "2025-10-05" }
+    ];
+
+    let bookedDates = [];
+    reservations.forEach(r => {
+      const start = new Date(r.start);
+      const end = new Date(r.end);
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+        bookedDates.push(d.toISOString().split('T')[0]);
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const calendar = new FullCalendar.Calendar(document.getElementById('rental-calendar'), {
+        initialView: 'dayGridMonth',
+        selectable: true,
+        selectMirror: true,
+        events: bookedDates.map(date => ({
+          title: 'Booked',
+          start: date,
+          display: 'background',
+          backgroundColor: '#f87171'
+        })),
+        select: function (info) {
+          const start = document.getElementById('start-date');
+          const end = document.getElementById('end-date');
+          const count = document.getElementById('days-count');
+
+          start.value = info.startStr;
+          end.value = info.endStr;
+
+          const diff = (new Date(info.endStr) - new Date(info.startStr)) / (1000 * 60 * 60 * 24);
+          count.textContent = `You selected ${diff} day(s).`;
+        },
+        dayCellDidMount: function (arg) {
+          const dateStr = arg.date.toISOString().split('T')[0];
+          if (!bookedDates.includes(dateStr)) {
+            arg.el.style.backgroundColor = "#bbf7d0"; // green available
+          }
+        }
+      });
+      calendar.render();
+    });
+  </script>
+      <script src="lang.js"></script>
+
+</body>
+</html>
